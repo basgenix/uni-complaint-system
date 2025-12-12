@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCRS Project Report</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cover-page {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .cover-page h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .cover-page .subtitle {
+            font-size: 1.4em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cover-page .meta {
+            font-size: 1.1em;
+            margin-top: 60px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #4a5568;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #2d3748;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: #2d3748;
+        }
+        
+        .highlight-box {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+        }
+        
+        .info-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        thead tr {
+            background: #667eea;
+            color: white;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        th, td {
+            padding: 15px 18px;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tbody tr:nth-of-type(even) {
+            background: #f7fafc;
+        }
+        
+        tbody tr:last-of-type {
+            border-bottom: 2px solid #667eea;
+        }
+        
+        tbody tr:hover {
+            background: #edf2f7;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #2d3748;
+        }
+        
+        .objective-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .objective-item {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .objective-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .objective-item h4 {
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .tech-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .tech-item h4 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #667eea;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+        }
+        
+        .timeline-item h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .badge-success {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .badge-warning {
+            background: #ed8936;
+            color: white;
+        }
+        
+        .badge-danger {
+            background: #f56565;
+            color: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .feature-card h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .print-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background 0.3s ease;
+        }
+        
+        .print-button:hover {
+            background: #5568d3;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                max-width: 100%;
+            }
+            
+            .print-button {
+                display: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cover-page h1 {
+                font-size: 2em;
+            }
+            
+            .cover-page .subtitle {
+                font-size: 1.1em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+            
+            .objective-list,
+            .tech-stack,
+            .feature-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Print Report</button>
+    
+    <div class="cover-page">
+        <h1>UNIVERSITY COMPLAINTS & REQUEST MANAGEMENT SYSTEM</h1>
+        <div class="subtitle">Project Plan & Requirements Documentation</div>
+        <div class="meta">
+            <p><strong>Project Code:</strong> UCRMS-2024</p>
+            <p><strong>Duration:</strong> 8-10 Weeks</p>
+            <p><strong>Version:</strong> 1.0</p>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="section">
+        <h2>1. Executive Summary</h2>
+        
+        <div class="info-card">
+            <h3>Project Overview</h3>
+            <p>The University Complaints & Request Management System (UCRMS) is a comprehensive web-based platform designed to revolutionize how Nigerian universities handle student complaints and requests. The system replaces inefficient manual processes with a modern, digital solution that ensures transparency, accountability, and improved service delivery.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">70%</div>
+                <div class="label">Reduction in Processing Time</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">100%</div>
+                <div class="label">Complaint Tracking</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">Zero</div>
+                <div class="label">Lost Complaints</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">24/7</div>
+                <div class="label">System Availability</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Key Objectives</h4>
+            <ul>
+                <li><strong>Primary:</strong> Digitize and automate the entire complaint management process</li>
+                <li><strong>Secondary:</strong> Reduce response time and significantly improve student satisfaction</li>
+                <li><strong>Tertiary:</strong> Provide data-driven insights for informed administrative decisions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Problem Statement -->
+    <div class="section">
+        <h2>2. Problem Statement & Solution</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>❌ Current Problems</h4>
+                <ul>
+                    <li>Manual paper-based submissions</li>
+                    <li>Long queues at offices</li>
+                    <li>No tracking mechanism</li>
+                    <li>Complaints get lost or ignored</li>
+                    <li>Zero accountability</li>
+                    <li>Students uninformed of status</li>
+                    <li>No data for decision-making</li>
+                    <li>Inefficient resource allocation</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>✅ Proposed Solutions</h4>
+                <ul>
+                    <li>24/7 online submission portal</li>
+                    <li>Automatic ticket generation</li>
+                    <li>Real-time status tracking</li>
+                    <li>Comprehensive admin dashboard</li>
+                    <li>Priority-based routing</li>
+                    <li>Email/SMS notifications</li>
+                    <li>Analytics and reporting</li>
+                    <li>Performance metrics & KPIs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stakeholders -->
+    <div class="section">
+        <h2>3. Stakeholder Analysis</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Stakeholder</th>
+                    <th>Role</th>
+                    <th>Interest Level</th>
+                    <th>Influence</th>
+                    <th>Engagement Strategy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Students</strong></td>
+                    <td>End Users</td>
+                    <td><span class="badge badge-danger">High</span></td>
+                    <td><span class="badge badge-warning">Medium</span></td>
+                    <td>Regular updates, feedback sessions</td>
+                </tr>
+                <tr>
+                    <td><strong>Admin Staff</strong></td>
+                    <td>End Users</td>
+                    <td><span class="badge badge-danger">High</span></td>
+                    <td><span class="badge badge-danger">High</span></td>
+                    <td>Training, design involvement</td>
+                </tr>
+                <tr>
+                    <td><strong>IT Department</strong></td>
+                    <td>Technical Support</td>
+                    <td><span class="badge badge-warning">Medium</span></td>
+                    <td><span class="badge badge-danger">High</span></td>
+                    <td>Technical consultations</td>
+                </tr>
+                <tr>
+                    <td><strong>Management</strong></td>
+                    <td>Sponsors</td>
+                    <td><span class="badge badge-danger">High</span></td>
+                    <td><span class="badge badge-danger">Very High</span></td>
+                    <td>Executive reports, demos</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Functional Requirements -->
+    <div class="section">
+        <h2>4. Functional Requirements</h2>
+        
+        <h3>4.1 User Management Module</h3>
+        <div class="info-card">
+            <h4>FR-001: User Registration</h4>
+            <p><span class="badge badge-danger">Priority: High</span></p>
+            <p><strong>Description:</strong> Students can create accounts using their university email and matriculation number.</p>
+            <p><strong>Acceptance Criteria:</strong></p>
+            <ul>
+                <li>Email must be valid university domain</li>
+                <li>Matric number must be unique</li>
+                <li>Password minimum 8 characters</li>
+                <li>Email verification required</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4>FR-002: User Authentication</h4>
+            <p><span class="badge badge-danger">Priority: High</span></p>
+            <p><strong>Description:</strong> Secure login system with JWT token authentication.</p>
+            <p><strong>Acceptance Criteria:</strong></p>
+            <ul>
+                <li>Support email/password login</li>
+                <li>Session timeout after 24 hours</li>
+                <li>Account lockout after 5 failed attempts</li>
+                <li>Password reset via email</li>
+            </ul>
+        </div>
+
+        <h3>4.2 Complaint Management Module</h3>
+        <div class="info-card">
+            <h4>FR-004: Submit Complaint</h4>
+            <p><span class="badge badge-danger">Priority: High</span></p>
+            <p><strong>Description:</strong> Students can submit new complaints/requests with full details and attachments.</p>
+            <p><strong>Acceptance Criteria:</strong></p>
+            <ul>
+                <li>Select category from predefined list</li>
+                <li>Enter title (max 200 characters)</li>
+                <li>Enter description (unlimited)</li>
+                <li>Attach files (optional, max 5MB each)</li>
+                <li>Auto-generate unique ticket number</li>
+                <li>Display confirmation message</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4>FR-005: Track Complaint</h4>
+            <p><span class="badge badge-danger">Priority: High</span></p>
+            <p><strong>Description:</strong> Real-time tracking of complaint status with detailed history.</p>
+            <p><strong>Acceptance Criteria:</strong></p>
+            <ul>
+                <li>View list of all submitted complaints</li>
+                <li>Filter by status/category/date</li>
+                <li>Search by ticket number</li>
+                <li>View detailed complaint information</li>
+                <li>See complete response history</li>
+            </ul>
+        </div>
+
+        <h3>4.3 Admin Management Module</h3>
+        <div class="info-card">
+            <h4>FR-007: View All Complaints</h4>
+            <p><span class="badge badge-danger">Priority: High</span></p>
+            <p><strong>Description:</strong> Admins can view and manage all complaints in the system.</p>
+            <p><strong>Acceptance Criteria:</strong></p>
+            <ul>
+                <li>List view with pagination</li>
+                <li>Advanced filtering by status/category/date/priority</li>
+                <li>Sort by any column</li>
+                <li>Comprehensive search functionality</li>
+                <li>Export to CSV/PDF</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4>FR-009: Update Complaint Status</h4>
+            <p><span class="badge badge-danger">Priority: High</span></p>
+            <p><strong>Description:</strong> Admins can update complaint status with proper documentation.</p>
+            <p><strong>Acceptance Criteria:</strong></p>
+            <ul>
+                <li>Status options: Pending, In Progress, Resolved, Closed, Rejected</li>
+                <li>Require comment for status change</li>
+                <li>Automatic notification to student</li>
+                <li>Record timestamp and admin details</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Non-Functional Requirements -->
+    <div class="section">
+        <h2>5. Non-Functional Requirements</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Requirement</th>
+                    <th>Target/Implementation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NFR-001</td>
+                    <td>Performance</td>
+                    <td>Page Load Time</td>
+                    <td>&lt; 3 seconds</td>
+                </tr>
+                <tr>
+                    <td>NFR-002</td>
+                    <td>Performance</td>
+                    <td>API Response Time</td>
+                    <td>&lt; 500ms</td>
+                </tr>
+                <tr>
+                    <td>NFR-003</td>
+                    <td>Scalability</td>
+                    <td>Concurrent Users</td>
+                    <td>Support 500+ simultaneous users</td>
+                </tr>
+                <tr>
+                    <td>NFR-006</td>
+                    <td>Security</td>
+                    <td>Password Encryption</td>
+                    <td>Bcrypt hashing algorithm</td>
+                </tr>
+                <tr>
+                    <td>NFR-007</td>
+                    <td>Security</td>
+                    <td>Data Transmission</td>
+                    <td>HTTPS/TLS encryption</td>
+                </tr>
+                <tr>
+                    <td>NFR-008</td>
+                    <td>Security</td>
+                    <td>Authentication</td>
+                    <td>JWT tokens with expiration</td>
+                </tr>
+                <tr>
+                    <td>NFR-013</td>
+                    <td>Usability</td>
+                    <td>Responsive Design</td>
+                    <td>Works on desktop, tablet, mobile</td>
+                </tr>
+                <tr>
+                    <td>NFR-018</td>
+                    <td>Reliability</td>
+                    <td>System Uptime</td>
+                    <td>99.5% availability</td>
+                </tr>
+                <tr>
+                    <td>NFR-019</td>
+                    <td>Reliability</td>
+                    <td>Data Backup</td>
+                    <td>Daily automated backups</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- System Architecture -->
+    <div class="section">
+        <h2>6. System Architecture</h2>
+        
+        <div class="highlight-box">
+            <h4>Three-Tier Architecture</h4>
+            <p>The system follows a modern three-tier architecture pattern:</p>
+            <ul>
+                <li><strong>Presentation Layer:</strong> React.js with Tailwind CSS for responsive, modern UI</li>
+                <li><strong>Application Layer:</strong> Flask REST API handling business logic and data processing</li>
+                <li><strong>Data Layer:</strong> PostgreSQL database with SQLAlchemy ORM for data persistence</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4>Key Architectural Components</h4>
+            <ul>
+                <li><strong>Load Balancer (Nginx):</strong> Distributes incoming traffic across multiple servers</li>
+                <li><strong>API Gateway:</strong> Central entry point for all API requests with authentication</li>
+                <li><strong>Caching Layer (Redis):</strong> Improves performance by caching frequently accessed data</li>
+                <li><strong>File Storage:</strong> Secure storage for complaint attachments and documents</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Database Design -->
+    <div class="section">
+        <h2>7. Database Design</h2>
+        
+        <h3>7.1 Core Tables</h3>
+        
+        <div class="info-card">
+            <h4>Users Table</h4>
+            <p>Stores all user information including students, admins, and super admins.</p>
+            <p><strong>Key Fields:</strong> id, email, password_hash, full_name, matric_number, department, faculty, phone, role, is_active, created_at, updated_at</p>
+            <p><strong>Indexes:</strong> email, matric_number, role</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Complaints Table</h4>
+            <p>Central table storing all complaint/request information.</p>
+            <p><strong>Key Fields:</strong> id, ticket_number, user_id, category, title, description, status, priority, assigned_to, attachments, created_at, updated_at, resolved_at</p>
+            <p><strong>Indexes:</strong> ticket_number, user_id, status, category, created_at</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Responses Table</h4>
+            <p>Stores all responses and communications related to complaints.</p>
+            <p><strong>Key Fields:</strong> id, complaint_id, user_id, message, is_internal, created_at</p>
+            <p><strong>Relationships:</strong> Many responses per complaint</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Notifications Table</h4>
+            <p>Manages all system notifications for users.</p>
+            <p><strong>Key Fields:</strong> id, user_id, complaint_id, type, message, is_read, created_at</p>
+            <p><strong>Purpose:</strong> Real-time updates and alerts</p>
+        </div>
+    </div>
+
+    <!-- User Roles -->
+    <div class="section">
+        <h2>8. User Roles & Permissions</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Permission</th>
+                    <th>Student</th>
+                    <th>Admin</th>
+                    <th>Super Admin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Register Account</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Submit Complaint</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>View Own Complaints</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>View All Complaints</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Update Complaint Status</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Assign Complaints</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>View Analytics</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Generate Reports</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Manage Users</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>System Configuration</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Technology Stack -->
+    <div class="section">
+        <h2>9. Technology Stack</h2>
+        
+        <div class="tech-stack">
+            <div class="tech-item">
+                <h4>Frontend</h4>
+                <p>React.js 18.x<br>Tailwind CSS 3.x<br>React Router v6<br>Axios & React Query<br>Chart.js/Recharts</p>
+            </div>
+            <div class="tech-item">
+                <h4>Backend</h4>
+                <p>Python 3.11+<br>Flask 3.x<br>Flask-SQLAlchemy<br>Flask-JWT-Extended<br>Flask-Mail</p>
+            </div>
+            <div class="tech-item">
+                <h4>Database</h4>
+                <p>PostgreSQL 15.x<br>Redis (Caching)<br>SQLite (Development)</p>
+            </div>
+            <div class="tech-item">
+                <h4>Deployment</h4>
+                <p>Nginx<br>Gunicorn<br>DigitalOcean/AWS<br>Docker (Optional)</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Why These Technologies?</h4>
+            <ul>
+                <li><strong>React.js:</strong> Component-based, fast, and excellent for building dynamic UIs</li>
+                <li><strong>Flask:</strong> Lightweight, flexible, and perfect for RESTful APIs</li>
+                <li><strong>PostgreSQL:</strong> Robust, reliable, and excellent for complex queries</li>
+                <li><strong>Tailwind CSS:</strong> Utility-first, rapid UI development, and highly customizable</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Development Timeline -->
+    <div class="section">
+        <h2>10. Development Phases & Timeline</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">10</div>
+                <div class="label">Weeks Total Duration</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">6</div>
+                <div class="label">Development Phases</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">240</div>
+                <div class="label">Estimated Hours</div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Phase 1: Planning & Setup (Weeks 1-2)</h4>
+                <p><span class="badge badge-primary">40 Hours</span></p>
+                <p><strong>Week 1:</strong> Stakeholder meetings, requirement documentation, UI/UX wireframes</p>
+                <p><strong>Week 2:</strong> Project structure, database design, development environment setup</p>
+                <p><strong>Deliverables:</strong> Requirements Document, Database Schema, Wireframes, Project Repository</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Phase 2: Authentication System (Weeks 3-4)</h4>
+                <p><span class="badge badge-primary">40 Hours</span></p>
+                <p><strong>Week 3:</strong> User model, registration API, login API with JWT, password reset</p>
+                <p><strong>Week 4:</strong> React setup, login/registration UI, auth context, protected routes</p>
+                <p><strong>Deliverables:</strong> Working registration, login system, JWT authentication, password reset</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Phase 3: Student Portal (Weeks 5-6)</h4>
+                <p><span class="badge badge-primary">40 Hours</span></p>
+                <p><strong>Week 5:</strong> Complaint models, submit complaint API/UI, file upload</p>
+                <p><strong>Week 6:</strong> List complaints, complaint detail page, response system, dashboard</p>
+                <p><strong>Deliverables:</strong> Complaint submission, file attachments, tracking, responses</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Phase 4: Admin Portal (Weeks 7-8)</h4>
+                <p><span class="badge badge-primary">40 Hours</span></p>
+                <p><strong>Week 7:</strong> Admin routes, view all complaints, status updates, assignments</p>
+                <p><strong>Week 8:</strong> User management, admin responses, internal notes</p>
+                <p><strong>Deliverables:</strong> Admin complaint management, status updates, user management</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Phase 5: Dashboard & Reports (Week 9)</h4>
+                <p><span class="badge badge-primary">20 Hours</span></p>
+                <p><strong>Activities:</strong> Statistics APIs, charts implementation, report generation, data export</p>
+                <p><strong>Deliverables:</strong> Interactive dashboard, analytics charts, PDF/Excel export</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Phase 6: Testing & Deployment (Week 10)</h4>
+                <p><span class="badge badge-primary">20 Hours</span></p>
+                <p><strong>Activities:</strong> Unit testing, integration testing, UAT, bug fixes, production deployment</p>
+                <p><strong>Deliverables:</strong> Test reports, bug-free application, documentation, training materials</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Risk Assessment -->
+    <div class="section">
+        <h2>11. Risk Assessment & Mitigation</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Risk</th>
+                    <th>Probability</th>
+                    <th>Impact</th>
+                    <th>Level</th>
+                    <th>Mitigation Strategy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Scope Creep</td>
+                    <td>High</td>
+                    <td>Medium</td>
+                    <td><span class="badge badge-danger">HIGH</span></td>
+                    <td>Clear requirements sign-off, change control process</td>
+                </tr>
+                <tr>
+                    <td>Delayed Client Feedback</td>
+                    <td>Medium</td>
+                    <td>High</td>
+                    <td><span class="badge badge-danger">HIGH</span></td>
+                    <td>Regular check-ins, set response deadlines</td>
+                </tr>
+                <tr>
+                    <td>Technical Challenges</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td><span class="badge badge-warning">MEDIUM</span></td>
+                    <td>Research ahead, have backup solutions</td>
+                </tr>
+                <tr>
+                    <td>Security Vulnerabilities</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td><span class="badge badge-warning">MEDIUM</span></td>
+                    <td>Security testing, follow OWASP guidelines</td>
+                </tr>
+                <tr>
+                    <td>Performance Issues</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td><span class="badge badge-success">LOW</span></td>
+                    <td>Load testing, optimization, caching</td>
+                </tr>
+                <tr>
+                    <td>Data Loss</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td><span class="badge badge-warning">MEDIUM</span></td>
+                    <td>Regular backups, version control, disaster recovery plan</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Testing Plan -->
+    <div class="section">
+        <h2>12. Testing Strategy</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Unit Testing</h4>
+                <p><strong>Backend (pytest):</strong></p>
+                <ul>
+                    <li>Model validation tests</li>
+                    <li>Utility function tests</li>
+                    <li>Password hashing tests</li>
+                    <li>Token generation tests</li>
+                </ul>
+                <p><strong>Target:</strong> 80%+ coverage</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Integration Testing</h4>
+                <p><strong>Focus Areas:</strong></p>
+                <ul>
+                    <li>Authentication flow</li>
+                    <li>Complaint CRUD operations</li>
+                    <li>Admin workflow</li>
+                    <li>Database transactions</li>
+                </ul>
+                <p><strong>Tools:</strong> pytest, Postman</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>End-to-End Testing</h4>
+                <p><strong>User Scenarios:</strong></p>
+                <ul>
+                    <li>Complete registration flow</li>
+                    <li>Submit & track complaints</li>
+                    <li>Admin management workflow</li>
+                    <li>Report generation</li>
+                </ul>
+                <p><strong>Tools:</strong> Cypress/Playwright</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deployment -->
+    <div class="section">
+        <h2>13. Deployment Strategy</h2>
+        
+        <div class="info-card">
+            <h4>Environment Strategy</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Environment</th>
+                        <th>Purpose</th>
+                        <th>Database</th>
+                        <th>Deployment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Development</strong></td>
+                        <td>Local development & feature work</td>
+                        <td>SQLite</td>
+                        <td>Manual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staging</strong></td>
+                        <td>Testing & client review</td>
+                        <td>PostgreSQL</td>
+                        <td>Auto on PR merge</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Production</strong></td>
+                        <td>Live users</td>
+                        <td>PostgreSQL (Managed)</td>
+                        <td>Manual trigger</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Deployment Checklist</h4>
+            <p><strong>Pre-Deployment:</strong></p>
+            <ul>
+                <li>All tests passing</li>
+                <li>Code review completed</li>
+                <li>Environment variables configured</li>
+                <li>Database migrations ready</li>
+                <li>Backup of current production</li>
+            </ul>
+            <p><strong>Post-Deployment:</strong></p>
+            <ul>
+                <li>Smoke tests verification</li>
+                <li>Monitor error logs</li>
+                <li>Monitor performance metrics</li>
+                <li>User acceptance verification</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Budget -->
+    <div class="section">
+        <h2>14. Budget Estimation</h2>
+        
+        <div class="info-card">
+            <h3>Development Costs (One-Time)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Hours</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Planning & Requirements</td>
+                        <td>40</td>
+                        <td>Stakeholder meetings, documentation, wireframes</td>
+                    </tr>
+                    <tr>
+                        <td>Backend Development</td>
+                        <td>80</td>
+                        <td>API development, database, authentication</td>
+                    </tr>
+                    <tr>
+                        <td>Frontend Development</td>
+                        <td>80</td>
+                        <td>UI development, integration, responsive design</td>
+                    </tr>
+                    <tr>
+                        <td>Testing & QA</td>
+                        <td>20</td>
+                        <td>Unit, integration, E2E testing</td>
+                    </tr>
+                    <tr>
+                        <td>Deployment & DevOps</td>
+                        <td>10</td>
+                        <td>Server setup, deployment pipeline</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>10</td>
+                        <td>User manuals, technical docs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>240 hours</strong></td>
+                        <td><strong>Complete system delivery</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-card">
+            <h3>Infrastructure Costs (Monthly)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Monthly Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cloud Hosting (DigitalOcean/AWS)</td>
+                        <td>$20 - $50</td>
+                    </tr>
+                    <tr>
+                        <td>Managed PostgreSQL Database</td>
+                        <td>$15 - $30</td>
+                    </tr>
+                    <tr>
+                        <td>Domain Name</td>
+                        <td>$1 - $2</td>
+                    </tr>
+                    <tr>
+                        <td>SSL Certificate</td>
+                        <td>Free (Let's Encrypt)</td>
+                    </tr>
+                    <tr>
+                        <td>Email Service (SendGrid)</td>
+                        <td>$0 - $20</td>
+                    </tr>
+                    <tr>
+                        <td>File Storage (S3/Spaces)</td>
+                        <td>$5 - $10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ESTIMATED TOTAL</strong></td>
+                        <td><strong>$41 - $112/month</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Deliverables -->
+    <div class="section">
+        <h2>15. Project Deliverables</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>📄 Documentation</h4>
+                <ul>
+                    <li>Project Plan Document</li>
+                    <li>Software Requirements Specification</li>
+                    <li>Database Design Document</li>
+                    <li>API Documentation</li>
+                    <li>User Manuals (Student & Admin)</li>
+                    <li>Technical Documentation</li>
+                    <li>Deployment Guide</li>
+                    <li>Training Materials</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>💻 Software</h4>
+                <ul>
+                    <li>Backend API (Flask)</li>
+                    <li>Frontend Application (React)</li>
+                    <li>Database Schema & Migrations</li>
+                    <li>Test Suite (Unit, Integration, E2E)</li>
+                    <li>Source Code Repository</li>
+                    <li>Configuration Files</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>🚀 Deployment</h4>
+                <ul>
+                    <li>Deployed Production Application</li>
+                    <li>SSL Certificate Setup</li>
+                    <li>Automated Backup System</li>
+                    <li>Monitoring & Logging Setup</li>
+                    <li>CI/CD Pipeline</li>
+                    <li>Disaster Recovery Plan</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maintenance -->
+    <div class="section">
+        <h2>16. Maintenance & Support</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Support Tier</th>
+                    <th>Duration</th>
+                    <th>Services Included</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Tier 1: Basic Support</strong></td>
+                    <td>30 days (Included)</td>
+                    <td>
+                        <ul>
+                            <li>Bug fixes</li>
+                            <li>Minor adjustments</li>
+                            <li>Email support</li>
+                            <li>Performance monitoring</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Tier 2: Extended Support</strong></td>
+                    <td>Monthly (Optional)</td>
+                    <td>
+                        <ul>
+                            <li>All Tier 1 features</li>
+                            <li>New feature requests</li>
+                            <li>Priority response</li>
+                            <li>Monthly maintenance</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Tier 3: Premium Support</strong></td>
+                    <td>Monthly (Optional)</td>
+                    <td>
+                        <ul>
+                            <li>All Tier 2 features</li>
+                            <li>24/7 monitoring</li>
+                            <li>Security updates</li>
+                            <li>Backup management</li>
+                            <li>Dedicated support channel</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="section">
+        <h2>17. Conclusion & Next Steps</h2>
+        
+        <div class="highlight-box">
+            <h4>Expected Outcomes</h4>
+            <ul>
+                <li><strong>Efficiency:</strong> 70% reduction in complaint processing time</li>
+                <li><strong>Accountability:</strong> 100% tracking of all complaints with zero loss</li>
+                <li><strong>Transparency:</strong> Real-time visibility for both students and administrators</li>
+                <li><strong>Data-Driven:</strong> Comprehensive analytics for informed decision-making</li>
+                <li><strong>Satisfaction:</strong> Improved student experience and administrative efficiency</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4>Implementation Roadmap</h4>
+            <ol>
+                <li><strong>Week 1-2:</strong> Finalize requirements and obtain stakeholder approval</li>
+                <li><strong>Week 3-4:</strong> Develop and test authentication system</li>
+                <li><strong>Week 5-6:</strong> Build student portal with complaint management</li>
+                <li><strong>Week 7-8:</strong> Implement admin portal and management features</li>
+                <li><strong>Week 9:</strong> Develop dashboard, analytics, and reporting</li>
+                <li><strong>Week 10:</strong> Complete testing, deployment, and training</li>
+            </ol>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Success Criteria</h4>
+            <p>The project will be considered successful when:</p>
+            <ul>
+                <li>All functional requirements are implemented and tested</li>
+                <li>System achieves 99.5% uptime with sub-3-second page loads</li>
+                <li>Students can submit and track complaints 24/7</li>
+                <li>Admins can efficiently manage and respond to all complaints</li>
+                <li>Analytics dashboard provides actionable insights</li>
+                <li>User acceptance testing is completed successfully</li>
+                <li>All documentation is delivered and training is conducted</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Approval -->
+    <div class="section">
+        <h2>18. Approval & Sign-Off</h2>
+        
+        <div class="info-card">
+            <p style="margin-bottom: 40px;">This comprehensive project plan has been prepared for the University Complaints & Request Management System. Stakeholder review and approval are required before proceeding with implementation.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Name</th>
+                        <th>Signature</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Project Sponsor</strong></td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Project Manager</strong></td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Technical Lead</strong></td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT Department Head</strong></td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                        <td>_____________________</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; margin-top: 60px; padding: 30px; background: #f7fafc; border-radius: 8px;">
+        <p style="font-size: 0.9em; color: #718096; margin-bottom: 10px;">
+            <strong>University Complaints & Request Management System (UCRMS)</strong>
+        </p>
+        <p style="font-size: 0.85em; color: #a0aec0;">
+            Document Version 1.0 | Prepared December 2024<br>
+            Confidential - For University Use Only
+        </p>
+    </div>
+
+</body>
+</html>
