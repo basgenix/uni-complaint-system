@@ -72,14 +72,8 @@ def initialize_extensions(app):
     bcrypt.init_app(app)
     
     # Initialize CORS
-    cors.init_app(app, resources={
-        r"/api/*": {
-            "origins": ["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:3000", "http://127.0.0.1:5173"],
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "allow_headers": ["Content-Type", "Authorization"],
-            "supports_credentials": True
-        }
-    })
+        # ... inside create_app ...
+    CORS(app, resources={r"/*": {"origins": "*"}})
     
     # JWT error handlers
     @jwt.expired_token_loader
