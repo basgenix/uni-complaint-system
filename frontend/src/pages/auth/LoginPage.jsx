@@ -27,17 +27,17 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
-    register,
-    handleSubmit,
-    setValue, // <--- Added this helper
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
+  register,
+  handleSubmit,
+  setValue, // <--- ADD THIS HERE
+  formState: { errors },
+} = useForm({
+  resolver: zodResolver(loginSchema),
+  defaultValues: {
+    email: '',
+    password: '',
+  },
+});
 
   const onSubmit = async (data) => {
     try {
@@ -61,10 +61,18 @@ const LoginPage = () => {
     }
   };
 
-  // Helper to set demo data safely
-  const handleDemoLogin = (email, password) => {
-    setValue('email', email, { shouldValidate: true });
-    setValue('password', password, { shouldValidate: true });
+    // Add this helper function inside the LoginPage component (before return)
+  const handleDemoLogin = (role) => {
+    const demoCreds = role === 'student' 
+      ? { email: 'student1@university.edu.ng', password: 'Student@123' }
+      : { email: 'admin1@university.edu.ng', password: 'Admin@123' };
+    
+    // Update form values
+    setValue('email', demoCreds.email);
+    setValue('password', demoCreds.password);
+    
+    // Submit immediately
+    handleSubmit(onSubmit)();
   };
 
   return (
@@ -167,8 +175,7 @@ const LoginPage = () => {
         
         <div className="grid grid-cols-2 gap-3">
           <button
-            type="button"
-            onClick={() => handleDemoLogin('student1@university.edu.ng', 'Student@123')}
+            type="button" onClick={() => handleDemoLogin('student')}
             className="px-4 py-2.5 text-sm font-medium text-neutral-700 bg-neutral-100 rounded-xl hover:bg-neutral-200 transition-colors"
           >
             Student Demo
